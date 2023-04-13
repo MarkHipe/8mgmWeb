@@ -4,8 +4,6 @@ import img1 from "../assets/SERVICES/CORPORATEGIVEAWAYS.jpg";
 import img2 from "../assets/SERVICES/HOTELANDCASINO.jpg";
 import img3 from "../assets/SERVICES/OFFICESUPPLIES.jpg";
 
-import { BsArrowRight } from "react-icons/bs";
-import { useEffect } from "react";
 const cardData = [
   {
     title: "School & Office Supplies",
