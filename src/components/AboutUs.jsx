@@ -1,18 +1,19 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import image3 from "../assets/image3.png";
-import image4 from "../assets/image4.png";
+import image3 from "../assets/OURMISSION.jpg";
+import image4 from "../assets/OURVISION.jpg";
 import { useIsInViewport } from "../utils/UseInView";
 const AboutUs = () => {
   const [hovered, sethovered] = useState(false);
   const intro = useRef(null);
   const mission = useRef(null);
   const mission2 = useRef(null);
+
+//check if the content is in viewport returns true
   const introView = useIsInViewport(intro);
- // console.log(introView);
+
   const missionView = useIsInViewport(mission);
- 
-  
+
   const missionView2 = useIsInViewport(mission2);
 
   return (
@@ -23,8 +24,7 @@ const AboutUs = () => {
           ref={intro}
         >
           <span>
-            <h1>ABOUT US</h1>
-            
+            <h1>WHO WE ARE</h1>
           </span>
           <div className="text">
             <p>
@@ -119,6 +119,14 @@ const AboutUs = () => {
         </div>
         <div className="missionp2" ref={mission2}>
           <div className={missionView2 === true ? "text  visible " : "text"}>
+          <h1
+                className={
+                  hovered === true || missionView === true ? "animate" : ""
+                }
+                style={{fontSize:"3rem", }}
+              >
+                OUR VISION
+              </h1>
             <p>
               With the use of wide distribution network and effective marketing
               schemes, we - 8MGM Trading Inc., has managed to grow continually
@@ -145,29 +153,39 @@ const Con = styled.div`
   margin: 3rem auto;
   height: 100%;
   // padding: 1rem;
+  @media (max-width: 412px) {
+    width: 95vw;
+  }
   & .wrap {
     width: 100%;
     & .about {
+      position: relative;
       display: flex;
       justify-content: space-between;
       // align-items: center;
       //justify-content: center;
       width: 100%;
       height: 100%;
-      &.visible {
-        -webkit-animation: slide-in-left 0.5s
-          cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        @keyframes slide-in-left {
-          0% {
-            -webkit-transform: translateX(-1000px);
-            transform: translateX(1000px);
-            opacity: 0;
-          }
-          100% {
-            -webkit-transform: translateX(0);
-            transform: translateX(0);
-            opacity: 1;
+      @media (max-width: 992px) {
+        flex-direction: column;
+      }
+      @media (min-width: 992px) {
+        &.visible {
+          -webkit-animation: slide-in-left 0.5s
+            cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            both;
+          @keyframes slide-in-left {
+            0% {
+              -webkit-transform: translateX(-1000px);
+              transform: translateX(1000px);
+              opacity: 0;
+            }
+            100% {
+              -webkit-transform: translateX(0);
+              transform: translateX(0);
+              opacity: 1;
+            }
           }
         }
       }
@@ -190,9 +208,10 @@ const Con = styled.div`
         & p {
           position: relative;
           right: 0;
-          width: 85%;
+          width: 95%;
           font-size: 15px;
           line-height: 30px;
+          text-align: justify;
           background-color: #005cb4;
           padding: 3rem 4rem;
           color: #eaeaea;
@@ -203,12 +222,15 @@ const Con = styled.div`
       }
     }
     & .mission {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       height: 100%;
-
+      @media (max-width: 992px) {
+        flex-direction: column-reverse;
+      }
       & .circle {
         height: 20px;
         width: 20px;
@@ -297,20 +319,22 @@ const Con = styled.div`
           width: 600px;
           border-radius: 100%;
           opacity: 0;
-          &.visible {
-            animation: slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-              both;
-            @keyframes slide-up {
-              0% {
-                transform: translateY(800px);
-          opacity: 1;
+          @media (max-width: 992px) {
+            opacity: 1;
+          }
+          @media (min-width: 992px) {
+            &.visible {
+              animation: slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+              @keyframes slide-up {
+                0% {
+                  transform: translateY(800px);
+                  opacity: 0;
+                }
 
-              }
-            
-              100% {
-                transform:translateY(0);
-          opacity: 1;
-
+                100% {
+                  transform: translateY(0);
+                  opacity: 1;
+                }
               }
             }
           }
@@ -324,6 +348,15 @@ const Con = styled.div`
         margin: 2rem;
         margin-right: 4rem;
         flex-direction: column;
+        @media (max-width: 768px) {
+          margin: 2rem auto;
+         
+        }
+        @media (max-width: 400px) {
+          margin: 2rem auto;
+         position: relative;
+         left: -5vw;
+        }
         & h1 {
           font-size: 3rem;
           font-weight: 700;
@@ -351,14 +384,22 @@ const Con = styled.div`
           padding: 1rem;
           color: #525252;
           font-weight: 500;
-          line-height: 30px;
+          text-align: justify;
 
+          line-height: 30px;
+          @media (max-width: 412px) {
+            margin: auto;
+            width: 80vw;
+          }
         }
         & span {
           position: absolute;
           color: #a7a7a73c;
-          margin-top: -7.5rem;
+          margin-top: -9.5rem;
           margin-left: -2rem;
+          & h1{
+          font-size: 4rem !important;
+          }
           &.animate {
             animation: slide-text-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
               both;
@@ -381,6 +422,9 @@ const Con = styled.div`
       display: flex;
       width: 100%;
       height: 100%;
+      @media (max-width: 992px) {
+        flex-direction: column;
+      }
       & .img {
         display: flex;
         justify-content: flex-end;
@@ -393,13 +437,16 @@ const Con = styled.div`
           border-bottom-left-radius: 200px;
           &.visible {
             animation: shine 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            @media (max-width: 992px) {
+        animation: none;
+      }
             @keyframes shine {
               0% {
                 //  filter: drop-shadow(0px 20px 60px rgba(4, 107, 204, 0.134));
               }
 
               100% {
-                filter: drop-shadow(0px 20px 60px rgba(3, 122, 234, 0.5));
+                /* filter: drop-shadow(0px 20px 60px rgba(3, 122, 234, 0.5)); */
               }
             }
           }
@@ -413,8 +460,13 @@ const Con = styled.div`
         margin: 3rem;
         flex-direction: column;
         opacity: 0;
+        @media (max-width: 992px) {
+
+       width: 100vw;
+       margin: 3rem 0;
+      }
         &.visible {
-          animation: visible-text 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: visible-text 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
           @keyframes visible-text {
             0% {
               //  filter: drop-shadow(0px 20px 60px rgba(4, 107, 204, 0.134));
@@ -430,7 +482,10 @@ const Con = styled.div`
           width: 400px;
           font-size: 15px;
           line-height: 30px;
-
+          text-align: justify;
+          @media (max-width: 992px) {
+            width: 50vw;
+          }
           padding: 1rem;
           color: #24753b;
           font-weight: 500;

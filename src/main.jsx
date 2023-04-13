@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import MainCon from "./MainCon";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

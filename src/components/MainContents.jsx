@@ -22,6 +22,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import gsap from "gsap";
 import logo from ".././assets/logo.png";
+import img1 from "../assets/slidePics/01.jpg";
+import img2 from "../assets/slidePics/02.jpg";
+import img3 from "../assets/slidePics/03.jpg";
+import img4 from "../assets/slidePics/04.jpg";
+import img5 from "../assets/slidePics/05.jpg";
+import img6 from "../assets/slidePics/06.jpg";
+import img7 from "../assets/slidePics/07.jpg";
+import img8 from "../assets/slidePics/08.jpg";
+import img9 from "../assets/slidePics/09.jpg";
+
 //import { ScrollSmoother } from "gsap/all";
 
 SwiperCore.use([Navigation, Pagination, Controller, Thumbs, Autoplay]);
@@ -29,118 +39,155 @@ SwiperCore.use([Navigation, Pagination, Controller, Thumbs, Autoplay]);
 const member = [
   {
     id: 0,
-    name: "Lee Kyoungyoon",
-    images:
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/acne-1624642769.jpg?crop=0.500xw:1.00xh;0,0&resize=640:*",
+    images: img1,
   },
   {
     id: 1,
-    name: "Kim Sehyeon",
-    images:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbw7N7R4KoscLIrqNHw7eab_iO130K4LDWOw&usqp=CAU",
+    images: img2,
   },
   {
     id: 2,
-    name: "Jeon Mingyu",
-    images:
-      "https://www.colgate.com/content/dam/cp-sites/oral-care/oral-care-center-relaunch/en-us/general/brands/colgate-total-12-regimen.jpg",
+    images: img3,
   },
   {
     id: 3,
-    name: "Jang Munik",
-    images:
-      "https://jnj-content-lab.brightspotcdn.com/dims4/default/ed3caa1/2147483647/strip/true/crop/1079x1079+0+0/resize/360x360!/quality/90/?url=http%3A%2F%2Fjnj-brightspot.s3.amazonaws.com%2F99%2Fd8%2F3094caf34f7ea52a0e3f375d3841%2Fproducts-landinage-page-silhouette-pharma.jpg",
+    images: img4,
   },
   {
     id: 4,
-    name: "Park Jaechan",
-    images:
-      "http://images.summitmedia-digital.com/preview/images/2021/03/05/most-expensive-skincare-nm.jpg",
+    images: img5,
+  },
+  {
+    id: 5,
+    images: img6,
+  },
+  {
+    id: 6,
+    images: img7,
+  },
+  {
+    id: 7,
+    images: img8,
+  },
+  {
+    id: 8,
+    images: img9,
+  },
+  {
+    id: 1,
+    images: img1,
   },
 ];
-//gsap.registerPlugin( ScrollSmoother);
 const MainContents = ({ actives }) => {
   const [active, setactive] = useState(0);
-  // gsap.registerPlugin( ScrollSmoother);
-  // const smoother = ScrollSmoother.create({
-  //   smooth: 2,   // seconds it takes to "catch up" to native scroll position
-  //   effects: true, // look for data-speed and data-lag attributes on elements and animate accordingly
-  //   smoothTouch: 0.1,
-  // });
-  
-  useLayoutEffect(() => {
-  //  ScrollSmoother.create();
-    const tl = gsap.timeline();
-    tl.to(
-      ".logos",
-      { duration: 1, ease: "power1.inOut", css: { y: 170, width: "100px" } },
-      "+=1"
-    );
 
-    tl.to(".first-text", {
-      duration: 1,
-      ease: "power1.inOut",
-      css: { opacity: 1 },
-    });
+  // Intro Animation //
+  // useLayoutEffect(() => {
+  //   if (window.innerWidth >= 992) {
+  //     const tl = gsap.timeline();
+  //     tl.to(".logos", {
+  //       duration: 1.5,
+  //       ease: "power1.inOut",
+  //       css: {
+  //         width: "100px",
+  //         position: "relative",
+  //         margin: "auto",
+  //         display: "flex",
+  //         alignSelf: "center",
+  //         top: "-20vh",
+  //         opacity: 1,
+  //       },
+  //     });
 
-    tl.to(".second-text", {
-      duration: 1,
-      ease: "power1.inOut",
-      css: { opacity: 1, y: 0, left: "20px" },
-    });
-    tl.to(
-      ".second-text",
-      { duration: 0.5, ease: "power1.inOut", css: { opacity: 0 } },
-      "+=1"
-    );
-    tl.to(
-      ".first-text",
-      { duration: 0.5, ease: "power1.inOut", css: { opacity: 0 } },
-      "-=2"
-    );
+  //     tl.to(".first-text", {
+  //       duration: 1.5,
+  //       ease: "power1.inOut",
+  //       css: { opacity: 1 },
+        
+  //     },"-=1");
 
-    tl.to(
-      ".logos",
-      {
-        duration: 1,
-        ease: "power1.inOut",
-        css: { x: "80", y: -20,
-        position:"absolute", margin:"auto", display: "flex", alignSelf:"flex-start" },
-      },
-    
-    );
-    //tl.to(".logos", { duration: 1, css: {y:-120} }, );
+  //     tl.to(".second-text", {
+  //       duration: 1,
+  //       ease: "power1.inOut",
+  //       css: { opacity: 1, y: 0, left: "20px" },
+  //     },"-=1");
+  //     tl.to(".second-text", {
+  //       duration: 0.5,
+  //       ease: "power1.inOut",
+  //       css: { opacity: 0 },
+  //     });
+  //     tl.to(
+  //       ".first-text",
+  //       { duration: 0.5, ease: "power1.inOut", css: { opacity: 0 } },
+  //       "-=1"
+  //     );
 
-    tl.to(".wrap", {
-      duration: 1,
-      ease: "power1.inOut",
-      css: { y: 0, visibility: "visible" },
-    },'-=1');
-    tl.to(
-      ".swiperCon",
-      { duration: 1, ease: "power1.inOut", css: { x: 0 } },
-      "-=1"
-    );
-  }, []);
+  //     tl.to(".logos", {
+  //       duration: 1,
+  //       ease: "power1.inOut",
+  //       css: {
+  //         left: "10vw",
+  //         position: "absolute",
+  //         margin: "auto",
+  //         display: "flex",
+  //         alignSelf: "flex-start",
+  //         top: "10vh",
+  //       },
+  //     });
+  //     //tl.to(".logos", { duration: 1, css: {y:-120} }, );
+
+  //     tl.to(
+  //       ".wrap",
+  //       {
+  //         duration: 1,
+  //         ease: "power1.inOut",
+  //         css: { y: 0, visibility: "visible" },
+  //       },
+  //       "-=1"
+  //     );
+  //     tl.to(
+  //       ".swiperCon",
+  //       { duration: 1, ease: "power1.inOut", css: { x: 0 } },
+  //       "-=1"
+  //     );
+  //     tl.to(
+  //       ".intro",
+  //       { duration: 1, ease: "power1.inOut", css: { display:"none" } },
+  //       "-=1"
+  //     );
+  //     // if (window.innerWidth <= 992) {
+  //     //   tl.to(".logos", {
+  //     //     duration: 1.5,
+  //     //     ease: "power1.inOut",
+  //     //     css: {
+  //     //       width: "40px",
+  //     //     opacity:1
+  //     //     },
+  //     //   });
+  //     // }
+  //   }
+  // }, []);
 
   return (
     <Con id="smooth-wrapper">
       <img className="logos" src={logo} alt="" />
+      {/* <img className="logos1" src={logo} alt="" /> */}
 
-      <div className="intro">
+      {/* <div className="intro">
         <div className="introText">
           <h2 className="first-text">Need It?</h2>
           <h1 className="second-text">WE HAVE IT!</h1>
         </div>
-      </div>
+      </div> */}
       <div className="wrap" id="smooth-content">
         <div className="left">
           <div className="header">
-            <h2>Need It?</h2>
+            <h2>NEED IT?</h2>
             <h1>WE HAVE IT!</h1>
             <p>
-              We supply different products And equipment for schools, hospitals,
-              offices, casinos
+              From <b>Office Supplies</b> and <b>Equipment</b> to{" "}
+              <b> Corporate Giveaways</b> and <b>Gifts</b>, we've got you
+              covered!
             </p>
             <div className="buttons">
               <button
@@ -157,21 +204,30 @@ const MainContents = ({ actives }) => {
                   actives("contact");
                 }}
               >
-                Contact Us
+                Inquire Now!
               </button>
             </div>
           </div>
         </div>
         <span className="sns">
           <div className="line"></div>
-          <IoLogoFacebook className="icon" />
-          <IoLogoLinkedin className="icon" />
-          <CiMail className="icon" />
-          <IoLogoInstagram className="icon" />
+          <a href="https://www.facebook.com/8mgmtrading.com.ph">
+            <IoLogoFacebook className="icon" />
+          </a>
+          <a href="https://www.linkedin.com/company/8mgmtrading/about/">
+            <IoLogoLinkedin className="icon" />
+          </a>
+          <a href="">
+            <CiMail className="icon" />
+          </a>
+
+          <a href="https://www.instagram.com/8mgm_trading/">
+            <IoLogoInstagram className="icon" />
+          </a>
           <div className="line"></div>
         </span>
         <div className="right">
-          <div className="circle"></div>
+          {/* <div className="circle"></div> */}
           <div className="swiperCon">
             <Swiper
               spaceBetween={5}
@@ -181,7 +237,7 @@ const MainContents = ({ actives }) => {
                 delay: 2000,
                 disableOnInteraction: false,
               }}
-              onInit={(swiper) => console.log(swiper)}
+              // onInit={(swiper) => console.log(swiper)}
               onSlideChange={(swiper) => {
                 // console.log("Slide index changed to: ", swiper.activeIndex);
                 setactive(swiper.activeIndex);
@@ -209,6 +265,7 @@ const MainContents = ({ actives }) => {
                       // zIndex: active === index ? "20" : "10",
                       overflow: "hidden",
                       objectFit: "cover",
+                      marginTop: "1rem",
                       filter:
                         active === index ? "brightness(1)" : "brightness(0.90)",
                     }}
@@ -226,26 +283,75 @@ const Con = styled.div`
   color: #fff;
 
   width: 100%;
-  & img.logos {
-    width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+  max-height: 800px;
+  & .logos {
     border-radius: 100%;
-    transform: translateY(100px);
     margin: auto;
+    /* display: flex; */
+    position: absolute;
+    height: 80px;
     display: flex;
-    align-self: center;
-    position: relative;
+    top: 2rem;
+    /* z-index: 46; */
+    left: 5rem;
+    /* align-self: center; */
+    /* top: 50%;
+    left: 50%;
+    z-index: 33;
+    opacity: 1;
+    transform: translate(-50%, -50%); */
+
+    /* place-self: center; */
+    @media (max-width: 992px) {
+      /* display: none; */
+      left: "";
+      right: "";
+      transform: none;
+      position: absolute;
+      left: 3rem;
+      top: 2rem;
+      opacity: 1;
+      height: 70px;
+    }
+  }
+  & .logos1 {
+    display: none;
+
+    /* place-self: center; */
+    @media (max-width: 992px) {
+      /* display: none; */
+      display: block;
+      left: "";
+      right: "";
+      transform: none;
+      position: absolute;
+      left: 3rem;
+      top: 2rem;
+      opacity: 1;
+      height: 70px;
+    }
   }
 
   & .intro {
-    width: 100%;
+    @media (max-width: 992px) {
+      display: none;
+    }
+    width: 100vw;
     height: 100vh;
-    max-width: 1800px;
+    /* max-width: 1800px; */
+    margin: auto;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: -6rem;
+    left: 0;
     flex-direction: column;
+    z-index: 45;
     & .introText {
       display: inline-flex;
     }
@@ -266,6 +372,9 @@ const Con = styled.div`
       opacity: 0;
       transform: translateY(200px);
     }
+    /* & .logos {
+      margin: auto;
+    } */
   }
   & span.sns {
     position: absolute;
@@ -274,6 +383,9 @@ const Con = styled.div`
     font-size: 18px;
     display: flex;
     flex-direction: column;
+    & a {
+      color: #fff;
+    }
     & .icon {
       margin: 0.5rem 1.5rem;
     }
@@ -287,24 +399,33 @@ const Con = styled.div`
   & .wrap {
     width: 100%;
     height: 100vh;
-    max-height: 800px;
+    /* max-height: 800px; */
     display: flex;
     // background-color: #95ffff54;
-    transform: translateY(1000px);
-    visibility: hidden;
+    /* transform: translateY(1000px); */
+    /* visibility: hidden; */
+    visibility: visible;
+    @media (max-width: 992px) {
+      visibility: visible;
+      transform: none;
+      /* max-height: 800px; */
+    }
     & .left {
       width: 80%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-
+      @media (max-width: 768px) {
+        width: 100vw;
+      }
       & .header {
         width: 70%;
         display: flex;
         justify-content: center;
         flex-direction: column;
         margin-top: -3rem;
+
         & h2 {
           font-size: 2.5rem;
           margin: 0;
@@ -319,6 +440,9 @@ const Con = styled.div`
           //text-transform: uppercase;
           color: #e3e3e3;
           margin-top: 3rem;
+          font-size: 1.2rem;
+          line-height: 24px;
+          letter-spacing: 1px;
         }
         & span {
           font-size: 25px;
@@ -329,8 +453,23 @@ const Con = styled.div`
             margin-right: 0.5rem;
           }
         }
+        @media (max-width: 768px) {
+          width: 80vw;
+          margin-left: 10vw;
+          margin-top: -6rem;
+          & h1 {
+            font-size: 2.5rem;
+          }
+          & p {
+            font-size: 0.9rem;
+          }
+        }
         & .buttons {
           margin-top: 3rem;
+          @media (max-width: 768px) {
+            display: flex;
+            flex-wrap: wrap;
+          }
           & button {
             border: none;
             border-radius: 20px;
@@ -338,7 +477,9 @@ const Con = styled.div`
             margin-right: 2rem;
             text-transform: uppercase;
             font-weight: 600;
+            white-space: nowrap;
             cursor: pointer;
+            margin: 1rem;
             &.services {
               color: #24753b;
               background-color: #ffe9e9;
@@ -366,6 +507,10 @@ const Con = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
       & .circle {
         position: absolute;
         width: 350px;
@@ -382,12 +527,15 @@ const Con = styled.div`
         text-align: center;
         margin: auto;
         width: 80%;
-        transform: translateX(1000px);
-        //height: 550px;
+        /* transform: translateX(1000px); */
+        height: 550px;
         justify-content: center;
         align-self: center;
         right: 4rem;
         top: 2rem;
+        @media (max-width: 992px) {
+          width: 100%;
+        }
         & img {
           position: relative;
           z-index: 5;

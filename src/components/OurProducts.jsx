@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { products } from "../api/products.js";
 import { Grid, Pagination } from "swiper";
@@ -9,15 +9,17 @@ import "swiper/css/pagination";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const OurProducts = () => {
-  return (
+  const [prev, setprev] = useState(0)
+  const [active, setactive] = useState("School")
+  return ( 
     <Con>
       <div className="heading">
         <h1>Our Products</h1>
         <div className="cat">
-          <span className="active">School</span>
-          <span>Hospital</span>
-          <span>Office</span>
-          <span>Casino</span>
+          <span   className={active==="School" ? "active":""} onClick={()=>{setactive("School")}} >School</span>
+          <span  className={active==="Office" ? "active":""} onClick={()=>{setactive("Office")}}>Office</span>
+          <span  className={active==="Hotel" ? "active":""} onClick={()=>{setactive("Hotel")}}>Hotel</span>
+          <span  className={active==="Casino" ? "active":""} onClick={()=>{setactive("Casino")}}>Casino</span>
         </div>
       </div>
       <div className="contents">
@@ -45,7 +47,7 @@ const OurProducts = () => {
           </div>
           </div>
           <div className="imageWrap">
-            <img src={products[0].image} alt="" />
+            <img src={products[prev].image} alt="" />
           </div>
         </div>
           <div className="prodSlider">
@@ -68,8 +70,8 @@ const OurProducts = () => {
                     rows: 2,
                   },
                 },
-                576: {
-                  slidesPerView: 2,
+                768: {
+                  slidesPerView: 3,
                   grid: {
                     rows: 2,
                   },
@@ -86,26 +88,15 @@ const OurProducts = () => {
                     rows: 2,
                   },
                   spaceBetween: 10,
-                },
-                1516: {
-                  slidesPerView: 3,
-                  grid: {
-                    rows: 2,
-                  },
-                },
-                1816: {
-                  slidesPerView: 4,
-                  grid: {
-                    rows: 2,
-                  },
-                },
+                }
+               
               }}
             >
               {products.map((prod, i) => {
                 return (
                   <SwiperSlide className="perSlide">
                     <div className="prodCard">
-                      <img src={prod.image} alt="" />
+                      <img src={prod.image} alt="" className={prev===i ? "active":""} onClick={()=>{setprev(i)}}/>
                     </div>{" "}
                   </SwiperSlide>
                 );
@@ -146,6 +137,7 @@ const Con = styled.div`
       margin: auto;
       justify-content: flex-end;
       align-items: center;
+      margin-top: 2rem;
       & span {
         margin: auto 10px;
         &.active {
@@ -162,6 +154,20 @@ const Con = styled.div`
     & .previewCon {
       width: 75%;
       display: flex;
+      @media (max-width:992px){
+       width:90%;
+      }
+      @media (max-width:532px){
+        display: flex;
+        flex-direction: column;
+       & .description{
+        width: 80vw !important;
+       }
+       & .imageWrap img{
+        object-fit: contain;
+      
+       }
+      }
       & .description {
         width: 35%;
         display: flex;
@@ -170,6 +176,7 @@ const Con = styled.div`
          margin: 0rem 3rem;
        
         flex-direction: column;
+      
       & .wrap{
         margin: 0rem auto;
         & h1 {
@@ -183,19 +190,52 @@ const Con = styled.div`
         }
         & p {
           width: 80%;
+          line-height:24px;
+        }
+      }
+      @media (max-width:992px){
+        width: 50%;
+        & .wrap{
+        margin: 0rem auto;
+        & h1 {
+         font-size: 18px;
+        }
+        & h3{
+          color: #5cab72;
+          font-size: 1rem;
+          margin-top: 1rem;
+
+        }
+        & p {
+          width: 80%;
+          font-size: 14px;
         }
       }
       }
+      
+   
+      }
       & .imageWrap {
-        width: 60%;
+       
         display: flex;
         justify-content: center;
         margin: auto;
         height: 400px;
-        width: 400px;
+        width: 400px ;
         background-color: transparent;
-box-shadow: 0px 0px 40px rgba(0, 92, 180, 0.35);
+       box-shadow: 0px 0px 40px rgba(0, 92, 180, 0.35);
         border-radius: 100%;
+        object-fit: contain;
+        @media (max-width:992px){
+          height: 300px;
+        width: 300px ;
+        }
+        @media (max-width:768px){
+          height: 250px;
+        width: 250px ;
+      
+        margin-top: 2rem;
+        }
       }
     }
     & .contentWrap {
@@ -203,6 +243,10 @@ box-shadow: 0px 0px 40px rgba(0, 92, 180, 0.35);
 
       justify-content: center;
       align-items: center;
+      @media (max-width:992px){
+        flex-direction: column;
+        margin-top: 3rem;
+      }
       & .productPrevCon { 
         width: 40%;
         height: 540px;
@@ -271,6 +315,12 @@ box-shadow: 0px 0px 40px rgba(0, 92, 180, 0.35);
         & .mySwiper {
           width: 35vw;
           height: 540px;
+          @media (max-width:992px){
+        width: 80vw;
+      }
+      @media (max-width:562px){
+        width: 98vw;
+      }
           & .swiper-wrapper {
             display: flex;
             justify-content: center;
@@ -302,11 +352,14 @@ box-shadow: 0px 0px 40px rgba(0, 92, 180, 0.35);
             z-index: 20;
             border: 1px solid #ccc;
             object-fit: cover;
-            @media (max-width: 768px) {
+            &.active{
+              border: 5px solid #24753b;
+            }
+            /* @media (max-width: 768px) {
               width: 200px;
               height: auto;
               object-fit: cover;
-            }
+            } */
           }
         }
       }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { CiLocationOn, CiMail } from "react-icons/ci";
 import {
@@ -7,6 +7,7 @@ import {
   IoLogoLinkedin,
   IoLogoFacebook,
 } from "react-icons/io5";
+import emailjs from "@emailjs/browser";
 
 const contact = [
   {
@@ -17,7 +18,7 @@ const contact = [
   },
   {
     name: "mail",
-    icon: <CiMail />, 
+    icon: <CiMail />,
     label: "info@8mgmtrading.com.ph",
   },
   {
@@ -43,6 +44,41 @@ const contact = [
 ];
 
 const ContactUs = () => {
+
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [message, setmessage] = useState("");
+
+  const form = useRef();
+
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_2kyg8fg",
+        "template_y37oc6p",
+        form.current,
+        "gt7Ij578hHgsOnJWC"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("message sent");
+          if (result.text === "OK") {
+            setsuccess(true);
+          }
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    setname("");
+    setemail("");
+    setmessage("");
+  };
+
   return (
     <Con>
       <div className="wrapper">
@@ -51,18 +87,28 @@ const ContactUs = () => {
             {" "}
             <div className="form">
               <h1>LEAVE US A MESSAGE</h1>
-              <form action="">
-                <input type="text" id="name" placeholder="Your name" />
-                <input type="email" id="email" placeholder="Email Address" />
+              <form ref={form} onSubmit={sendEmail}>
+                <input  name="user_name"
+                  type="text"
+                  placeholder="Name"
+                  onChange={(event) => setname(event.target.value)}
+                  value={name} />
+                <input  name="user_email"
+                  type="email"
+                  placeholder="Email"
+                  onChange={(event) => setemail(event.target.value)}
+                  value={email} />
                 <textarea
                   name="message"
                   id=""
                   cols="30"
-                  rows="9"
+                  rows="6"
                   placeholder="Message"
+                  onChange={(event) => setmessage(event.target.value)}
+                  value={message}
                 ></textarea>
                 <div className="btn">
-                  <button>SEND</button>
+                <input className="button" type="submit" value="SEND" />
                 </div>
               </form>
             </div>
@@ -128,9 +174,9 @@ const Con = styled.div`
 
     & .cardCon {
       display: flex;
-      background-color: #24753B;
+      background-color: #24753b;
       justify-content: center;
-     // border-radius: 20px;
+      // border-radius: 20px;
       height: 600px;
 
       & .card {
@@ -149,10 +195,10 @@ const Con = styled.div`
           border-bottom-right-radius: 100%;
           padding: 20px;
           width: 400px;
-          height:560px;
-         // margin-left: -10rem;
-         display: flex;
-         flex-direction: column;
+          height: 560px;
+          // margin-left: -10rem;
+          display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           & form {
@@ -161,9 +207,8 @@ const Con = styled.div`
             justify-content: center;
             width: 80%;
             margin: 1rem;
-          
           }
-          & h1{
+          & h1 {
             color: #393939;
             font-size: 20px;
             font-weight: bold;
@@ -185,17 +230,17 @@ const Con = styled.div`
             border-bottom: 1px solid;
             outline: none;
           }
-          & .btn{
+          & .btn {
             display: flex;
             justify-content: flex-end;
             align-items: center;
             padding: 1rem;
-            & button{
-                border: none;
-                padding: 10px 30px;
-                border-radius:20px;
-                background-color: #24753B;
-                color: #fff;
+            & .button {
+              border: none;
+              padding: 10px 30px;
+              border-radius: 20px;
+              background-color: #24753b;
+              color: #fff;
             }
           }
         }
@@ -247,6 +292,64 @@ const Con = styled.div`
           & .right {
             display: flex;
             flex-direction: column;
+          }
+        }
+      }
+      @media (max-width: 992px) {
+        & .card {
+          width: 40%;
+        }
+        & .right {
+          width: 60%;
+        }
+      }
+      @media (max-width: 768px) {
+        flex-direction: column;
+        height: auto;
+        & .card {
+          width: 100vw;
+          left: 0rem;
+          & .form {
+            border-radius: 10px;
+            margin-top: 20px;
+            & form {
+              margin: 0;
+            }
+          }
+        }
+        & .right {
+          width: 100%;
+          margin: auto;
+          margin: 1rem 0;
+
+          & .mapWrapper {
+            margin: 1rem auto;
+            margin-right: 0;
+          }
+          & .header {
+            width: 90vw;
+            margin-top: 2rem;
+            margin-left: 8vw;
+            & h1 {
+              font-size: 1.3rem;
+            }
+          }
+          & .contacts {
+            width: 90vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @media (max-width: 768px) {
+              margin: 3rem 0;
+            }
+            @media (max-width: 412px) {
+              flex-wrap: wrap;
+            }
+            & p {
+              font-size: 14px !important;
+            }
+            & .contact {
+            }
           }
         }
       }
