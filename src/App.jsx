@@ -1,18 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import NavCon from "./components/NavCon";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainContents from "./components/MainContents";
-import AboutUs from "./components/AboutUs";
-import OurServices from "./components/OurServices";
-import img8 from "./assets/FOOTER.jpg";
-import OurProducts from "./components/OurProducts";
-import MeetOurTeam from "./components/MeetOurTeam";
-import ContactUs from "./components/ContactUs";
-import blob from "./assets/greenBlob.svg";
-import { useIsInViewport } from "./utils/UseInView";
-import { gsap } from "gsap";
-import { InView } from "react-intersection-observer";
 import Footer from "./components/Footer";
 import MainCon from "./MainCon";
 import ProductMainCon from "./ProductMainCon";
