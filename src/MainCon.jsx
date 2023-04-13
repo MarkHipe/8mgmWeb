@@ -4,7 +4,7 @@ import NavCon from "./components/NavCon";
 import MainContents from "./components/MainContents";
 import AboutUs from "./components/AboutUs";
 import OurServices from "./components/OurServices";
-import img8 from "./assets/FOOTER.jpg";
+import img8 from "./assets/Footer.jpg";
 import OurProducts from "./components/OurProducts";
 import ContactUs from "./components/ContactUs";
 import blob from "./assets/greenBlob.svg";
@@ -79,7 +79,6 @@ function MainCon() {
       <Con className="App">
         <div className="backgroundImg">
           <img src={blob} alt="" ref={(el) => (blobWrapper = el)} />
-          {/* <div className="shadow"></div> */}
         </div>
         <div className="Main" ref={home}>
           <InView onChange={setinview}>
@@ -102,13 +101,9 @@ function MainCon() {
         <div className="OurProducts" ref={products}>
           <OurProducts />
         </div>
-        {/* <div className="MeetOurTeam">
-          <MeetOurTeam />
-        </div> */}
         <div className="ContactUs" ref={contact}>
           <ContactUs />
         </div>
-        {/* <Footer /> */}
       </Con>
       <style jsx>{`
         h1,
