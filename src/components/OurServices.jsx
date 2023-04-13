@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import img1 from "../assets/SERVICES/CORPORATEGIVEAWAYS.jpg";
-import img2 from "../assets/SERVICES/HOTELANDCASINO.jpg";
-import img3 from "../assets/SERVICES/OFFICESUPPLIES.jpg";
+import img1 from "../assets/services/CORPORATEGIVEAWAYS.jpg";
+import img2 from "../assets/services/HOTELANDCASINO.jpg";
+import img3 from "../assets/services/OFFICESUPPLIES.jpg";
 
 const cardData = [
   {
