@@ -13,7 +13,6 @@ import blob from "./assets/greenBlob.svg";
 import { useIsInViewport } from "./utils/UseInView";
 import { gsap } from "gsap";
 import { InView } from "react-intersection-observer";
-import Footer from "./components/Footer";
 function MainCon() {
   const [inview, setinview] = useState(0);
   const [active, setactive] = useState("home");
