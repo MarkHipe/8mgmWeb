@@ -29,7 +29,6 @@ const OurServices = () => {
   const [active, setactive] = useState(0);
   const [prev, setprev] = useState(active);
 
-  
   return (
     <Con>
       <div className="heading">
@@ -56,8 +55,12 @@ const OurServices = () => {
               <p>{cardData[active].content}</p>
             </div>
           </div>
-          <div  className={active !=prev ? "imageWrap active" : "imageWrap"}>
-            <img className={active !=prev ? "active" : ""} src={cardData[active].img} alt="" />
+          <div className={active != prev ? "imageWrap active" : "imageWrap"}>
+            <img
+              className={active != prev ? "active" : ""}
+              src={cardData[active].img}
+              alt=""
+            />
           </div>
         </div>
         <div className="cardWrap">
@@ -65,12 +68,12 @@ const OurServices = () => {
             return (
               <div
                 onClick={() => {
-                  setprev(active)
+                  setprev(active);
 
                   setactive(i);
                 }}
                 onMouseOver={() => {
-                  setprev(active)
+                  setprev(active);
                   setactive(i);
                 }}
                 className={active === i ? "card active" : "card"}
@@ -263,24 +266,12 @@ const Con = styled.div`
         border-radius: 100%;
 
         overflow: hidden;
-       &.active{
-        animation: zoom-out-2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both ;
-        @keyframes zoom-out-2 {
-          0% {
-            //  filter: drop-shadow(0px 20px 60px rgba(4, 107, 204, 0.134));
-            transform: scale(0.8);
-          }
-
-          100% {
-            transform: scale(1);
-          }
+        @media (max-width: 1276px) {
+          height: 400px !important;
+          width: 400px;
         }
-       }
-        & img {
-          width: 500px !important;
-          height: 500px;
-          animation: zoom-out-2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both ;
-         &.active{
+        &.active {
+          animation: zoom-out-2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
           @keyframes zoom-out-2 {
             0% {
               //  filter: drop-shadow(0px 20px 60px rgba(4, 107, 204, 0.134));
@@ -291,7 +282,27 @@ const Con = styled.div`
               transform: scale(1);
             }
           }
-         }
+        }
+        & img {
+          width: 500px !important;
+          height: 500px;
+          animation: zoom-out-2 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          @media (max-width: 1276px) {
+            height: 400px !important;
+            width: 400px !important;
+          }
+          &.active {
+            @keyframes zoom-out-2 {
+              0% {
+                //  filter: drop-shadow(0px 20px 60px rgba(4, 107, 204, 0.134));
+                transform: scale(0.8);
+              }
+
+              100% {
+                transform: scale(1);
+              }
+            }
+          }
         }
         @media (max-width: 768px) {
           width: 400px;
@@ -314,7 +325,7 @@ const Con = styled.div`
         & .card {
           background-color: #fff;
           cursor: pointer;
-          width: 300px;
+          width: 250px;
           padding: 0.5rem;
           display: flex;
           flex-direction: column;
@@ -325,11 +336,11 @@ const Con = styled.div`
           animation: slide-out 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
           @keyframes slide-out {
             0% {
-              width: 350px;
+              width: 250px;
             }
 
             100% {
-              width: 300px;
+              width: 220px;
             }
           }
           & img {
@@ -366,6 +377,17 @@ const Con = styled.div`
                 width: 350px;
               }
             }
+            @media (max-width: 1276px) {
+              @keyframes slide-in {
+              0% {
+                width: 250px;
+              }
+
+              100% {
+                width: 300px;
+              }
+            }
+        }
             & img {
               background-color: #fff;
             }

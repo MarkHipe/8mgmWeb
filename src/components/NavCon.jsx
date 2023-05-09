@@ -241,6 +241,7 @@ const Con = styled.div`
     display: none;
     font-size: 2rem;
     cursor: pointer;
+    color:#c9ffa5;
     padding: 10px;
     position: relative;
     z-index: 30;
@@ -250,7 +251,10 @@ const Con = styled.div`
     }
     @media (max-width: 991px) {
       display: block;
-      color: #fff;
+      /* color: #fff;
+       */
+      color: #2f2f2f;
+
     }
   }
   & .mobilebar1 {
@@ -260,6 +264,7 @@ const Con = styled.div`
     padding: 10px;
     position: relative;
     z-index: 50;
+    color:#c9ffa5;
     &:hover {
       background-color: #acacac5f;
       border-radius: 100%;
