@@ -44,13 +44,11 @@ const contact = [
 ];
 
 const ContactUs = () => {
-
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [message, setmessage] = useState("");
 
   const form = useRef();
-
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -82,22 +80,33 @@ const ContactUs = () => {
   return (
     <Con>
       <div className="wrapper">
+        <div className="heading">
+          <h2>Contact Us</h2>{" "}
+          <p>
+            Feel free to contact us anytime, We will get back to you as soon as
+            we can
+          </p>
+        </div>
         <div className="cardCon">
           <div className="card">
             {" "}
             <div className="form">
               <h1>LEAVE US A MESSAGE</h1>
               <form ref={form} onSubmit={sendEmail}>
-                <input  name="user_name"
+                <input
+                  name="user_name"
                   type="text"
                   placeholder="Name"
                   onChange={(event) => setname(event.target.value)}
-                  value={name} />
-                <input  name="user_email"
+                  value={name}
+                />
+                <input
+                  name="user_email"
                   type="email"
                   placeholder="Email"
                   onChange={(event) => setemail(event.target.value)}
-                  value={email} />
+                  value={email}
+                />
                 <textarea
                   name="message"
                   id=""
@@ -108,7 +117,7 @@ const ContactUs = () => {
                   value={message}
                 ></textarea>
                 <div className="btn">
-                <input className="button" type="submit" value="SEND" />
+                  <input className="button" type="submit" value="SEND" />
                 </div>
               </form>
             </div>
@@ -117,7 +126,7 @@ const ContactUs = () => {
             <div className="mapWrapper">
               {" "}
               <iframe
-                style={{ width: "100%", height: "300px" }}
+                style={{ width: "100%", height: "400px" }}
                 class="gmap_iframe"
                 frameborder="0"
                 scrolling="no"
@@ -127,11 +136,8 @@ const ContactUs = () => {
               ></iframe>
             </div>
             <div className="header">
-              <h1>CONTACT US</h1>
-              <p>
-                Feel free to contact us anytime, We will get back to you as soon
-                as we can
-              </p>
+              {/* <h1>CONTACT US</h1> */}
+
               <div className="contacts">
                 <div className="left">
                   {contact.slice(0, 3).map((item, i) => {
@@ -171,6 +177,21 @@ const Con = styled.div`
   padding-bottom: 1rem;
   & .wrapper {
     width: 100%;
+    .heading {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      & h2 {
+        text-align: center;
+        font-size: 3rem;
+        color: #24753b;
+      }
+      & p{
+        text-align:center;
+        position: relative;
+        top:-1rem;
+      }
+    }
 
     & .cardCon {
       display: flex;
@@ -191,8 +212,8 @@ const Con = styled.div`
           background-color: #ffff;
           box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
           //border-radius: 20px;
-          border-top-right-radius: 100%;
-          border-bottom-right-radius: 100%;
+          /* border-top-right-radius: 100%;
+          border-bottom-right-radius: 100%; */
           padding: 20px;
           width: 400px;
           height: 560px;
@@ -250,6 +271,8 @@ const Con = styled.div`
         & .mapWrapper {
           margin: 1rem auto;
           margin-right: 2rem;
+          justify-content:center;
+          align-items:center;
         }
         & .header {
           & h1 {

@@ -17,13 +17,13 @@ function MainCon() {
   const nav = useRef(null);
   const home = useRef(null);
   const about = useRef(null);
-  const products = useRef(null);
+  // const products = useRef(null);
   const services = useRef(null);
   const contact = useRef(null);
   let blobWrapper = useRef(null);
   const homeView = useIsInViewport(home);
   const aboutView = useIsInViewport(about);
-  const productsView = useIsInViewport(products);
+  // const productsView = useIsInViewport(products);
 
 //   useEffect(() => {
 //     if (window.innerWidth >= 992) {
@@ -56,8 +56,6 @@ function MainCon() {
       ref = home;
     } else if (active === "about") {
       ref = about;
-    } else if (active === "products") {
-      ref = products;
     } else if (active === "services") {
       ref = services;
     } else if (active === "contact") {
@@ -98,12 +96,12 @@ function MainCon() {
             <div className="button">{/* <button>Contact Us</button> */}</div>
           </div>
         </div>
-        <div className="OurProducts" ref={products}>
+        {/* <div className="OurProducts" ref={products}>
           <OurProducts />
-        </div>
-        <div className="ContactUs" ref={contact}>
+        </div> */}
+        {/* <div className="ContactUs" ref={contact}>
           <ContactUs />
-        </div>
+        </div> */}
       </Con>
       <style jsx>{`
         h1,

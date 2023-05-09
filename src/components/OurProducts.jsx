@@ -6,21 +6,50 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
-import { AiOutlineHeart } from "react-icons/ai";
-
+import logo from "./../assets/logo.png"
 const OurProducts = () => {
-  const [prev, setprev] = useState(0)
-  const [active, setactive] = useState("School")
-  return ( 
+  const [prev, setprev] = useState(0);
+  const [active, setactive] = useState("School");
+  return (
     <Con>
+      {/* <img className="logos" src={logo} alt="" /> */}
+
       <div className="heading">
         <h1>Our Products</h1>
-        <div className="cat">
-          <span   className={active==="School" ? "active":""} onClick={()=>{setactive("School")}} >School</span>
-          <span  className={active==="Office" ? "active":""} onClick={()=>{setactive("Office")}}>Office</span>
-          <span  className={active==="Hotel" ? "active":""} onClick={()=>{setactive("Hotel")}}>Hotel</span>
-          <span  className={active==="Casino" ? "active":""} onClick={()=>{setactive("Casino")}}>Casino</span>
-        </div>
+        {/* <div className="cat">
+          <span
+            className={active === "School" ? "active" : ""}
+            onClick={() => {
+              setactive("School");
+            }}
+          >
+            School
+          </span>
+          <span
+            className={active === "Office" ? "active" : ""}
+            onClick={() => {
+              setactive("Office");
+            }}
+          >
+            Office
+          </span>
+          <span
+            className={active === "Hotel" ? "active" : ""}
+            onClick={() => {
+              setactive("Hotel");
+            }}
+          >
+            Hotel
+          </span>
+          <span
+            className={active === "Casino" ? "active" : ""}
+            onClick={() => {
+              setactive("Casino");
+            }}
+          >
+            Casino
+          </span>
+        </div> */}
       </div>
       <div className="contents">
         <div className="contentWrap">
@@ -39,17 +68,17 @@ const OurProducts = () => {
             </div>
           </div> */}
           <div className="previewCon">
-          <div className="description">
-          <div className="wrap">
-          <h1>{products[0].name}</h1>
-            <h3> We provide school supplies</h3>
-            <p>{products[0].description}</p>
+            <div className="description">
+              <div className="wrap">
+                <h1>{products[0].name}</h1>
+                <h3> We provide school supplies</h3>
+                <p>{products[0].description}</p>
+              </div>
+            </div>
+            <div className="imageWrap">
+              <img src={products[prev].image} alt="" />
+            </div>
           </div>
-          </div>
-          <div className="imageWrap">
-            <img src={products[prev].image} alt="" />
-          </div>
-        </div>
           <div className="prodSlider">
             <Swiper
               modules={[Grid, Pagination]}
@@ -88,16 +117,22 @@ const OurProducts = () => {
                     rows: 2,
                   },
                   spaceBetween: 10,
-                }
-               
+                },
               }}
             >
               {products.map((prod, i) => {
                 return (
                   <SwiperSlide className="perSlide">
                     <div className="prodCard">
-                      <img src={prod.image} alt="" className={prev===i ? "active":""} onClick={()=>{setprev(i)}}/>
-                    </div>{" "}
+                      <img
+                        src={prod.image}
+                        alt=""
+                        className={prev === i ? "active" : ""}
+                        onClick={() => {
+                          setprev(i);
+                        }}
+                      />
+                    </div>
                   </SwiperSlide>
                 );
               })}
@@ -118,6 +153,10 @@ const Con = styled.div`
   // background: linear-gradient(150.33deg, #b5ffca 5.97%, #4aff7e 82.86%);
   padding-bottom: 2rem;
   color: #424242;
+  & .logos{
+    height:80px;
+
+  }
   & .heading {
     width: 100%;
     text-align: center;
@@ -126,9 +165,10 @@ const Con = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color:#24753b;
     & h1 {
       font-size: 3rem;
-      color: #24753b;
+      color: #fff;
       // border-bottom: 1px solid;
     }
     & .cat {
@@ -151,90 +191,85 @@ const Con = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 90%;
     & .previewCon {
       width: 75%;
       display: flex;
-      @media (max-width:992px){
-       width:90%;
+      @media (max-width: 992px) {
+        width: 90%;
       }
-      @media (max-width:532px){
+      @media (max-width: 532px) {
         display: flex;
         flex-direction: column;
-       & .description{
-        width: 80vw !important;
-       }
-       & .imageWrap img{
-        object-fit: contain;
-      
-       }
+        & .description {
+          width: 80vw !important;
+        }
+        & .imageWrap img {
+          object-fit: contain;
+        }
       }
       & .description {
         width: 35%;
         display: flex;
-       // justify-content: center;
-       // align-items: center;
-         margin: 0rem 3rem;
-       
+        // justify-content: center;
+        // align-items: center;
+        margin: 0rem 3rem;
+
         flex-direction: column;
-      
-      & .wrap{
-        margin: 0rem auto;
-        & h1 {
-          color: #24753b;
-        }
-        & h3{
-          color: #5cab72;
-          font-size: 1.5rem;
-          margin-top: -1rem;
 
+        & .wrap {
+          margin: 0rem auto;
+          & h1 {
+            color: #24753b;
+          }
+          & h3 {
+            color: #5cab72;
+            font-size: 1.5rem;
+            margin-top: -1rem;
+          }
+          & p {
+            width: 80%;
+            line-height: 24px;
+          }
         }
-        & p {
-          width: 80%;
-          line-height:24px;
+        @media (max-width: 992px) {
+          width: 50%;
+          & .wrap {
+            margin: 0rem auto;
+            & h1 {
+              font-size: 18px;
+            }
+            & h3 {
+              color: #5cab72;
+              font-size: 1rem;
+              margin-top: 1rem;
+            }
+            & p {
+              width: 80%;
+              font-size: 14px;
+            }
+          }
         }
-      }
-      @media (max-width:992px){
-        width: 50%;
-        & .wrap{
-        margin: 0rem auto;
-        & h1 {
-         font-size: 18px;
-        }
-        & h3{
-          color: #5cab72;
-          font-size: 1rem;
-          margin-top: 1rem;
-
-        }
-        & p {
-          width: 80%;
-          font-size: 14px;
-        }
-      }
-      }
-      
-   
       }
       & .imageWrap {
-       
         display: flex;
         justify-content: center;
         margin: auto;
         height: 400px;
-        width: 400px ;
+        width: 400px;
         background-color: transparent;
-       box-shadow: 0px 0px 40px rgba(0, 92, 180, 0.35);
+        box-shadow: 0px 0px 40px rgba(0, 92, 180, 0.35);
         border-radius: 100%;
         object-fit: contain;
-        @media (max-width:992px){
+        @media (max-width: 992px) {
           height: 300px;
-        width: 300px ;
+          width: 300px;
         }
-        @media (max-width:768px){
+        @media (max-width: 768px) {
           height: 250px;
-        width: 250px ;
-      
-        margin-top: 2rem;
+          width: 250px;
+
+          margin-top: 2rem;
         }
       }
     }
@@ -243,11 +278,11 @@ const Con = styled.div`
 
       justify-content: center;
       align-items: center;
-      @media (max-width:992px){
+      @media (max-width: 992px) {
         flex-direction: column;
         margin-top: 3rem;
       }
-      & .productPrevCon { 
+      & .productPrevCon {
         width: 40%;
         height: 540px;
         display: flex;
@@ -302,7 +337,7 @@ const Con = styled.div`
               margin-left: 10px;
             }
           }
-        } 
+        }
       }
 
       & .prodSlider {
@@ -315,12 +350,12 @@ const Con = styled.div`
         & .mySwiper {
           width: 35vw;
           height: 540px;
-          @media (max-width:992px){
-        width: 80vw;
-      }
-      @media (max-width:562px){
-        width: 98vw;
-      }
+          @media (max-width: 992px) {
+            width: 80vw;
+          }
+          @media (max-width: 562px) {
+            width: 98vw;
+          }
           & .swiper-wrapper {
             display: flex;
             justify-content: center;
@@ -352,7 +387,7 @@ const Con = styled.div`
             z-index: 20;
             border: 1px solid #ccc;
             object-fit: cover;
-            &.active{
+            &.active {
               border: 5px solid #24753b;
             }
             /* @media (max-width: 768px) {

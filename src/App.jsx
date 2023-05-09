@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import MainCon from "./MainCon";
 import ProductMainCon from "./ProductMainCon";
+import InquiryMainCon from "./inquiryMainCon";
 function App() {
 
   // const [inview, setinview] = useState(0);
@@ -76,6 +77,8 @@ function App() {
       <Routes>
             <Route path="/" element={<MainCon  />} />
             <Route path="/products" element={<ProductMainCon  />} />
+            <Route path="/inquiry" element={<InquiryMainCon  />} />
+
 
             {/* <Route path="/about" element={<About />} /> */}
          

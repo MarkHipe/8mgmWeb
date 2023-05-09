@@ -170,7 +170,7 @@ const MainContents = ({ actives }) => {
 
   return (
     <Con id="smooth-wrapper">
-      <img className="logos" src={logo} alt="" />
+      {/* <img className="logos" src={logo} alt="" /> */}
       {/* <img className="logos1" src={logo} alt="" /> */}
 
       {/* <div className="intro">

@@ -332,8 +332,8 @@ const Con = styled.div`
     width: 80px;
     border-radius: 100%;
     margin-left: 2rem;
-    opacity: 0;
-    height: 0;
+    opacity: 1;
+    /* height: 0; */
   }
   & h1 {
     font-size: 1.1rem;

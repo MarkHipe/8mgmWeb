@@ -3,9 +3,9 @@ import styled from "styled-components";
 import NavCon from "./components/NavCon";
 import OurProducts from "./components/OurProducts";
 import { InView } from "react-intersection-observer";
+import ContactUs from "./components/ContactUs";
 import img8 from "./assets/Footer.jpg";
-
-function ProductMainCon() {
+function InquiryMainCon() {
   const [inview, setinview] = useState(0);
   const [active, setactive] = useState("products");
 
@@ -14,33 +14,30 @@ function ProductMainCon() {
   return (
     <>
       <Con className="">
-      
-      <InView onChange={setinview}>
-            <div ref={nav}>
-              <NavCon active={setactive} currActive={active} inView={inview} />
-            </div>
-          </InView>
-      <div className="con">
-        <div className="OurProducts" >
-          <OurProducts />
+        <InView onChange={setinview}>
+          <div ref={nav}>
+            <NavCon active={setactive} currActive={active} inView={inview} />
+          </div>
+        </InView>
+        <div className="con">
+          <div className="OurProducts">
+            <ContactUs />
+          </div>
         </div>
-      </div>
-      <div className="imgBanner">
+        <div className="imgBanner">
           <img src={img8} alt="" />
           <div className="button">{/* <button>Contact Us</button> */}</div>
         </div>
       </Con>
-    
     </>
   );
 }
 const Con = styled.div`
- width: 100vw;
-& .con{
+  width: 100vw;
+  & .con {
     /* padding-top: 4rem; */
-
-}
-& .imgBanner {
+  }
+  & .imgBanner {
       display: flex;
       margin-top: 2rem;
       margin: 5rem 0;
@@ -100,4 +97,4 @@ const Con = styled.div`
     }
 `;
 
-export default ProductMainCon;
+export default InquiryMainCon;
