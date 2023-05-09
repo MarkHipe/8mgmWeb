@@ -70,7 +70,7 @@ const OurProducts = () => {
           <div className="previewCon">
             <div className="description">
               <div className="wrap">
-                <h1>{products[0].name}</h1>
+                <h1>{products[prev].name}</h1>
                 <h3> We provide school supplies</h3>
                 <p>{products[0].description}</p>
               </div>
@@ -213,8 +213,8 @@ const Con = styled.div`
         display: flex;
         // justify-content: center;
         // align-items: center;
-        margin: 0rem 3rem;
-
+        margin: .5rem 3rem;
+        font-size:13px;
         flex-direction: column;
 
         & .wrap {
@@ -225,7 +225,7 @@ const Con = styled.div`
           & h3 {
             color: #5cab72;
             font-size: 1.5rem;
-            margin-top: -1rem;
+            margin-top: 1rem;
           }
           & p {
             width: 80%;
