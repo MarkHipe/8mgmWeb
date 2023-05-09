@@ -70,7 +70,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="wrapper">
+        {/* <div className="wrapper">
           <h1>Information</h1>
           <span className="line"></span>
           <div className="list">
@@ -90,28 +90,28 @@ const Footer = () => {
               Terms and Conditions
             </p>
           </div>
-        </div>
+        </div> */}
         <div className="wrapper">
           <h1>Our Services</h1>
           <span className="line"></span>
           <div className="list">
             <p
               onClick={() => {
-                navigate("/services");
+                navigate("/home/services");
               }}
             >
             Office and School Supplies
             </p>
             <p
               onClick={() => {
-                navigate("/services");
+                navigate("/home/services");
               }}
             >
              Hotel and Casino Gifts
             </p>
             <p
               onClick={() => {
-                navigate("/services");
+                navigate("/home/services");
               }}
             >
              Corporate Giveaways
