@@ -41,14 +41,14 @@ const Footer = () => {
             </p>
             <p
               onClick={() => {
-                navigate("/about");
+                navigate("/home/about");
               }}
             >
               About Us
             </p>
             <p
               onClick={() => {
-                navigate("/services");
+                navigate("/home/services");
               }}
             >
               Our Services
