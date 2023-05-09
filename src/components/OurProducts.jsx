@@ -6,7 +6,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
-import logo from "./../assets/logo.png"
+import logo from "./../assets/logo.png";
+
+
+
 const OurProducts = () => {
   const [prev, setprev] = useState(0);
   const [active, setactive] = useState("School");

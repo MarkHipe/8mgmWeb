@@ -324,7 +324,7 @@ const Con = styled.div`
           }
           @media (min-width: 992px) {
             &.visible {
-              animation: slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+              animation: slide-up .3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
               @keyframes slide-up {
                 0% {
                   transform: translateY(800px);
