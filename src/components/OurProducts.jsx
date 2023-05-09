@@ -393,6 +393,9 @@ const Con = styled.div`
             &.active {
               border: 5px solid #24753b;
             }
+            &:hover {
+              border: 5px solid #5caf7486;
+            }
             /* @media (max-width: 768px) {
               width: 200px;
               height: auto;
