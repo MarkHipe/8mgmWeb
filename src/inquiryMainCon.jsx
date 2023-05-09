@@ -39,9 +39,9 @@ const Con = styled.div`
   }
   & .imgBanner {
       display: flex;
-      margin-top: 2rem;
-      margin: 5rem 0;
-      height: 400px;
+      /* margin-top: 2rem; */
+      margin: 1rem 0;
+      height: 350px;
       justify-content: center;
       overflow: hidden;
       & img {

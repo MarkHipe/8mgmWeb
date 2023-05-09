@@ -31,6 +31,7 @@ import img6 from "../assets/slidePics/06.jpg";
 import img7 from "../assets/slidePics/07.jpg";
 import img8 from "../assets/slidePics/08.jpg";
 import img9 from "../assets/slidePics/09.jpg";
+import { useNavigate } from "react-router-dom";
 
 //import { ScrollSmoother } from "gsap/all";
 
@@ -80,7 +81,7 @@ const member = [
 ];
 const MainContents = ({ actives }) => {
   const [active, setactive] = useState(0);
-
+  const navigate= useNavigate();
   // Intro Animation //
   // useLayoutEffect(() => {
   //   if (window.innerWidth >= 992) {
@@ -201,7 +202,7 @@ const MainContents = ({ actives }) => {
               <button
                 className="contacts"
                 onClick={() => {
-                  actives("contact");
+                  navigate("/inquiry")
                 }}
               >
                 Inquire Now!

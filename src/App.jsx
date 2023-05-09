@@ -6,7 +6,6 @@ import MainCon from "./MainCon";
 import ProductMainCon from "./ProductMainCon";
 import InquiryMainCon from "./inquiryMainCon";
 function App() {
-
   // const [inview, setinview] = useState(0);
   // const [active, setactive] = useState("home");
 
@@ -73,17 +72,18 @@ function App() {
   return (
     <Router>
       <Con className="App">
-      
-      <Routes>
-            <Route path="/" element={<MainCon  />} />
-            <Route path="/products" element={<ProductMainCon  />} />
-            <Route path="/inquiry" element={<InquiryMainCon  />} />
+        <Routes>
+          <Route path="/" element={<MainCon />} />
 
+          <Route path="/home" element={<MainCon />} />
+          <Route path="/home/about" element={<MainCon />} />
+          <Route path="/home/services" element={<MainCon />} />
 
-            {/* <Route path="/about" element={<About />} /> */}
-         
+          <Route path="/products" element={<ProductMainCon />} />
+          <Route path="/inquiry" element={<InquiryMainCon />} />
 
-          </Routes>
+          {/* <Route path="/about" element={<About />} /> */}
+        </Routes>
         <Footer />
       </Con>
       <style jsx>{`
@@ -105,17 +105,18 @@ function App() {
           margin: 0;
           top: 0;
           left: 0;
-           box-sizing:border-box;
+          box-sizing: border-box;
         }
-        p{
+        p {
           text-align: justify;
+          scroll-behavior: smooth;
         }
       `}</style>
     </Router>
   );
 }
 const Con = styled.div`
-overflow-x: hidden;
+  overflow-x: hidden;
 `;
 
 export default App;

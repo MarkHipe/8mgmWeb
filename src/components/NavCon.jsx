@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from ".././assets/logo.png";
@@ -6,9 +6,58 @@ import gsap from "gsap";
 import { IoCall, IoClose } from "react-icons/io5";
 import { FaBars } from "react-icons/fa";
 
-const NavCon = ({ active, inView }) => {
+const NavCon = ({ active, inView,setactive }) => {
   const [nav, setnav] = useState("home");
   const [float, setfloat] = useState(false);
+  const [newpage, setnewpage] = useState(false)
+  const loc = window.location.href;
+  const navs = useRef(null);
+
+  useEffect(() => {
+    if (loc.includes("inquiry")) {
+      setnav("inquiry");
+      setnewpage(true)
+      setfloat(false)
+    } else if (loc.includes("products")) {
+      setnav("products");
+      setnewpage(true)
+      setfloat(false)
+    }else if (loc.includes("home")&&loc.includes("services")) {
+      setnav("services");
+    
+    } else if (loc.includes("about")) {
+      setnav("about");
+      
+    }else {
+      console.log("false");
+    }
+    //  console.log(isInquiryPresent)
+  }, [loc]);
+
+
+  useEffect(() => {
+    //check the active nav and scroll the content into viewport
+    let ref = "";
+    let inview = ref.current;
+  if (newpage === true) {
+      ref = navs;
+    }
+    if (ref && ref.current) {
+      const executeScroll = (ref) =>
+        ref.current.scrollIntoView({ behavior: "smooth" });
+      executeScroll(ref);
+     
+      // useMountEffect(executeScroll); // Scroll on mount
+    }
+    //setchange(true);
+    // setactive("");
+  }, [newpage]);
+  // useEffect(() => {
+  //   if(inView===false){
+  //     setfloat(true)
+  //   }
+  // }, [inView])
+  
 
   // make the navigation visible after the intro
   // useLayoutEffect(() => {
@@ -19,14 +68,22 @@ const NavCon = ({ active, inView }) => {
   // }, []);
 
   return (
-    <Con className={inView === false ? "float" : ""}>
+    <>
+    {
+      inView===false && (
+        <div className="placeholder" style={{height:"80px"}}></div>
+      )
+    }
+   
+    <Con ref={navs} className={inView === false ? "float" : ""}>
+     
       <div className="content">
         <span>
           <img className="logo" src={logo} alt="" />
         </span>
         <div className="nav">
           <Link
-            to="/"
+            to="/home"
             className={nav === "home" ? "navs active" : "navs"}
             onClick={() => {
               active("home");
@@ -36,7 +93,7 @@ const NavCon = ({ active, inView }) => {
             Home
           </Link>
           <Link
-            to="/"
+            to="/home/about"
             className={nav === "about" ? "navs active" : "navs"}
             onClick={() => {
               active("about");
@@ -46,11 +103,12 @@ const NavCon = ({ active, inView }) => {
             About
           </Link>
           <Link
-            to="/"
+            to="/home/services"
             className={nav === "services" ? "navs active" : "navs"}
             onClick={() => {
               active("services");
               setnav("services");
+              // setactive("services");
             }}
           >
             Our Services
@@ -69,10 +127,10 @@ const NavCon = ({ active, inView }) => {
           </Link>
           <Link
             to="/inquiry"
-            className={nav === "careers" ? "navs active" : "navs"}
+            className={nav === "inquiry" ? "navs active" : "navs"}
             onClick={() => {
-              active("careers");
-              setnav("careers");
+              active("inquiry");
+              setnav("inquiry");
               setfloat(false);
             }}
           >
@@ -101,7 +159,7 @@ const NavCon = ({ active, inView }) => {
         {float && (
           <div className="floatnav">
             <Link
-              to=""
+              to="/home"
               className={nav === "home" ? "navs1 active" : "navs1"}
               onClick={() => {
                 active("home");
@@ -112,7 +170,7 @@ const NavCon = ({ active, inView }) => {
               Home
             </Link>
             <Link
-              to="/"
+              to="/home/about"
               className={nav === "about" ? "navs1 active" : "navs1"}
               onClick={() => {
                 active("about");
@@ -123,7 +181,7 @@ const NavCon = ({ active, inView }) => {
               About
             </Link>
             <Link
-              to="/"
+              to="/home/services"
               className={nav === "services" ? "navs1 active" : "navs1"}
               onClick={() => {
                 active("services");
@@ -135,7 +193,7 @@ const NavCon = ({ active, inView }) => {
             </Link>
 
             <Link
-              to=""
+              to="/products"
               className={nav === "products" ? "navs1 active" : "navs1"}
               onClick={() => {
                 active("products");
@@ -163,6 +221,10 @@ const NavCon = ({ active, inView }) => {
         )}
       </div>
     </Con>
+    {/* {
+        !inView ? (<div className="placeholder"></div>): null
+      } */}
+    </>
   );
 };
 const Con = styled.div`
@@ -172,7 +234,9 @@ const Con = styled.div`
   justify-content: center;
   position: relative;
   z-index: 43;
-
+  & .placeholder{
+    height:80px;
+  }
   & .mobilebar {
     display: none;
     font-size: 2rem;
@@ -236,6 +300,7 @@ const Con = styled.div`
   }
   &.float {
     position: fixed;
+    opacity:0;
     top: -2rem;
     left: 0;
     right: 0;

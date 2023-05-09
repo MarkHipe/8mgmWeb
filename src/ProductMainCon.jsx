@@ -42,8 +42,8 @@ const Con = styled.div`
 }
 & .imgBanner {
       display: flex;
-      margin-top: 2rem;
-      margin: 5rem 0;
+      /* margin-top: 21rem; */
+      margin: 1rem 0;
       height: 400px;
       justify-content: center;
       overflow: hidden;

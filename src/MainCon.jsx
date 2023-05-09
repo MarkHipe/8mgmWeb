@@ -12,7 +12,7 @@ import { useIsInViewport } from "./utils/UseInView";
 import { InView } from "react-intersection-observer";
 function MainCon() {
   const [inview, setinview] = useState(0);
-  const [active, setactive] = useState("home");
+  const [active, setactive] = useState();
 
   const nav = useRef(null);
   const home = useRef(null);
@@ -23,28 +23,44 @@ function MainCon() {
   let blobWrapper = useRef(null);
   const homeView = useIsInViewport(home);
   const aboutView = useIsInViewport(about);
+
+  const loc = window.location.href;
+
+  useEffect(() => {
+    if (loc.includes("inquiry")) {
+    } else if (loc.includes("about")) {
+      setactive("about");
+
+    } else if (loc.includes("services")) {
+      setactive("services");
+    } else {
+      console.log("false");
+    }
+    //  console.log(isInquiryPresent)
+  }, []);
+
   // const productsView = useIsInViewport(products);
 
-//   useEffect(() => {
-//     if (window.innerWidth >= 992) {
-//       const tl = gsap.timeline();
-//       tl.to(
-//         blobWrapper,
-//         { duration: 3, ease: "power1.inOut", css: { scale: 1 } },
-//         "+=1"
-//       );
-//       // tl.to(".backgroundImg", { duration: .5, css: { opacity:0} }, "-=3");
+  //   useEffect(() => {
+  //     if (window.innerWidth >= 992) {
+  //       const tl = gsap.timeline();
+  //       tl.to(
+  //         blobWrapper,
+  //         { duration: 3, ease: "power1.inOut", css: { scale: 1 } },
+  //         "+=1"
+  //       );
+  //       // tl.to(".backgroundImg", { duration: .5, css: { opacity:0} }, "-=3");
 
-//       // tl.to(".App", { duration: .5, css: { opacity:0} }, "-=2.5");
-//       // tl.to(".backgroundImg", { duration: 1, css: { opacity:1} }, "-=1.5");
+  //       // tl.to(".App", { duration: .5, css: { opacity:0} }, "-=2.5");
+  //       // tl.to(".backgroundImg", { duration: 1, css: { opacity:1} }, "-=1.5");
 
-//       tl.to(
-//         ".App",
-//         { duration: 0.5, css: { position: "relative", opacity: 1 } },
-//         "-=2"
-//       );
-//     }
-//   }, []);
+  //       tl.to(
+  //         ".App",
+  //         { duration: 0.5, css: { position: "relative", opacity: 1 } },
+  //         "-=2"
+  //       );
+  //     }
+  //   }, []);
 
   useEffect(() => {
     //check the active nav and scroll the content into viewport
@@ -122,9 +138,9 @@ function MainCon() {
           margin: 0;
           top: 0;
           left: 0;
-          box-sizing:border-box;
+          box-sizing: border-box;
         }
-        p{
+        p {
           text-align: justify;
         }
       `}</style>
