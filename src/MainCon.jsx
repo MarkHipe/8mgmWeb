@@ -232,7 +232,7 @@ const Con = styled.div`
           }
         }
         &:hover {
-          animation: zoom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: zoom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
           @keyframes zoom {
             0% {
               transform: scale(1);
