@@ -51,7 +51,7 @@ const OurServices = () => {
           <div className="description">
             <div className="wrap">
               <h1>{cardData[active].title}</h1>
-              <h3> We provide school supplies</h3>
+              <h3> We provide supplies</h3>
               <p>{cardData[active].content}</p>
             </div>
           </div>

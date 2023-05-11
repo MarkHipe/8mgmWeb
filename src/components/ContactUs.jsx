@@ -189,6 +189,7 @@ const Con = styled.div`
       & p{
         text-align:center;
         position: relative;
+        margin: auto 1rem;
         top:-1rem;
       }
     }

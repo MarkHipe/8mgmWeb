@@ -74,7 +74,7 @@ const OurProducts = () => {
             <div className="description">
               <div className="wrap">
                 <h1>{products[prev].name}</h1>
-                <h3> We provide school supplies</h3>
+                {/* <h3> We provide school supplies</h3> */}
                 <p>{products[0].description}</p>
               </div>
             </div>
